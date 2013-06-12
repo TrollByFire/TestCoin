@@ -289,7 +289,7 @@ Value stop(const Array& params, bool fHelp)
     StartShutdown();
     return "TestCoin server has now stopped running!";
 }
-
+/*
 Value submitblock(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 2)
@@ -314,7 +314,7 @@ Value submitblock(const Array& params, bool fHelp)
         return "rejected"; 
 
     return Value::null;
-}
+}*/
 Value getblockcount(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 0)
@@ -2396,7 +2396,7 @@ static const CRPCCommand vRPCCommands[] =
     { "dumpprivkey",            &dumpprivkey,            false },
     { "importprivkey",          &importprivkey,          false },
     { "listunspent",            &listunspent,            false },
-    { "submitblock",            &submitblock,            false },
+    //{ "submitblock",            &submitblock,            false },
     { "getrawtransaction",      &getrawtransaction,      false },
     { "createrawtransaction",   &createrawtransaction,   false },
     { "decoderawtransaction",   &decoderawtransaction,   false },
