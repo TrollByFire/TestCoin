@@ -830,6 +830,8 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     int64 nSubsidy = 50 * COIN;
 
+    // nSubsidy is cut in half every 4 years
+    nSubsidy >>= (nHeight / 1051200);
     return nSubsidy + nFees;
 }
 
