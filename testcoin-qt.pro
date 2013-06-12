@@ -4,6 +4,21 @@ VERSION = 0.6.3
 INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN __NO_SYSTEM_INCLUDES HAVE_BUILD_INFO
 CONFIG += no_include_pwd
+DEPS = ../deps
+BDB_LIB_PATH=$$DEPS/db-4.8.30.NC/build_unix
+BDB_INCLUDE_PATH=$$DEPS/db-4.8.30.NC/build_unix
+BOOST_LIB_PATH=../deps/boost_1_50_0/stage/lib
+BOOST_INCLUDE_PATH=$$DEPS/boost_1_50_0
+BOOST_LIB_SUFFIX=-mt-s
+BOOST_THREAD_LIB_SUFFIX=_win32-mt-s
+OPENSSL_LIB_PATH=$$DEPS/openssl-1.0.1e
+OPENSSL_INCLUDE_PATH=$$DEPS/openssl-1.0.1e/include
+INCLUDEPATH=/qt/include/
+DEFINES=BOOST_THREAD_USE_LIB
+BITCOIN_NEED_QT_PLUGINS=1
+QMAKE_LRELEASE=lrelease
+QMAKE_CXXFLAGS=-frandom-seed=testcoin
+USE_BUILD_INFO=1
 
 # UNCOMMENT THIS SECTION TO BUILD ON WINDOWS
 # Change paths if needed, these use the testcoin/deps.git repository locations
@@ -12,7 +27,7 @@ CONFIG += no_include_pwd
 #LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
 #LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 #windows:LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
-#LIBS += -lboost_system-mgw46-mt-sd-1_53 -lboost_filesystem-mgw46-mt-sd-1_53 -lboost_program_options-mgw46-mt-sd-1_53 -lboost_thread-mgw46-mt-sd-1_53
+#LIBS += -lboost_system-mt-s -lboost_filesystem-mt-s -lboost_program_options-mt-s -lboost_thread-mt-s
 #BOOST_LIB_SUFFIX=-mgw46-mt-sd-1_53
 #BOOST_INCLUDE_PATH=C:/deps/boost
 #BOOST_LIB_PATH=C:/deps/boost/stage/lib
@@ -341,7 +356,7 @@ LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 # -lgdi32 has to happen after -lcrypto (see  #681)
 windows:LIBS += -lole32 -luuid -lgdi32
-LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX
+LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX -lboost_chrono$$BOOST_LIB_SUFFIX
 
 contains(RELEASE, 1) {
     !windows:!macx {
