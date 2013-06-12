@@ -1,3 +1,3 @@
-TestCoin (FOO)
+TestCoin (TSC)
 
 Blah, blah, blah.
